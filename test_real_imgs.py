@@ -62,39 +62,30 @@ def test_real_imgs_row_data(airplane, automobile, bird, cat, deer, dog, frog, ho
         if airplane == 1:
             if train_set[i][1] == 0:
                 cifar_image_set.append(train_set[i][0])
-
         elif automobile == 1:
             if train_set[i][1] == 1:
                 cifar_image_set.append(train_set[i][0])
-
         elif bird == 1:
             if train_set[i][1] == 2:
                 cifar_image_set.append(train_set[i][0])
-
         elif cat == 1:
             if train_set[i][1] == 3:
                 cifar_image_set.append(train_set[i][0])
-
         elif deer == 1:
             if train_set[i][1] == 4:
                 cifar_image_set.append(train_set[i][0])
-
         elif dog == 1:
             if train_set[i][1] == 5:
                 cifar_image_set.append(train_set[i][0])
-
         elif frog == 1:
             if train_set[i][1] == 6:
                 cifar_image_set.append(train_set[i][0])
-
         elif horse == 1:
             if train_set[i][1] == 7:
                 cifar_image_set.append(train_set[i][0])
-
         elif ship == 1:
             if train_set[i][1] == 8:
                 cifar_image_set.append(train_set[i][0])
-
         elif truck == 1:
             if train_set[i][1] == 9:
                 cifar_image_set.append(train_set[i][0])
