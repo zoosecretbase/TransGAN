@@ -21,6 +21,8 @@ from models import *
 from fid_score import *
 from inception_score import *
 
+import random
+
 
 """
 ラベル「0」： airplane（飛行機）
@@ -38,7 +40,7 @@ from inception_score import *
 
 def test_real_imgs_row_data(airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck):
     '''
-    CIFAR10の中から、好きな種類の画像のみを、1つの配列にしてくれます。
+    CIFAR10の中から、好きな種類の画像のみを、1つのリストにしてくれます。
     
     関数利用時は、
 
@@ -92,3 +94,13 @@ def test_real_imgs_row_data(airplane, automobile, bird, cat, deer, dog, frog, ho
 
     print("complete create cifar_image_set")
     return cifar_image_set
+
+
+def test_a_real_img(list):
+    """
+    指定された種類数*`2500枚の中から、1枚ランダムで取り出してくれる関数
+    """
+    a_real_imgs = list[random.randrange(1,len(list))]
+    return a_real_imgs
+
+
