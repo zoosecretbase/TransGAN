@@ -12,7 +12,7 @@ horse = 0
 ship = 0
 truck = 0
 
-real_imgs_list = test_real_imgs_row_data(airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck)
+real_imgs_list = real_imgs_row_data(airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck)
 
-a_real_img = test_a_real_img(real_imgs_list)
+a_real_img = a_real_img(real_imgs_list)
 
