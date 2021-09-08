@@ -298,31 +298,31 @@ real_imgsに、generatorで生成される結果の画像と同じサイズに�
 
 
 def test_get_fid_real_imgs(real_imgs, epoch, generator, num_img, val_batch_size, latent_dim, writer_dict=None, cls_idx=None):
-    fid_score = test_calculate_fid_given_paths_torch(real_imgs, real_imgs)  # この関数で、img_listとreal_imgsから計算するんだろうな。
+    # fid_score = test_calculate_fid_given_paths_torch(real_imgs, real_imgs)  # この関数で、img_listとreal_imgsから計算するんだろうな。
 
-    # generator.eval()
-    # with torch.no_grad():
-    #     # eval mode
-    #     generator = generator.eval()
-    #     eval_iter = num_img // val_batch_size
-    #     img_list = []
-    #     for _ in tqdm(range(eval_iter), desc='sample images'):
-    #         noise = torch.cuda.FloatTensor(np.random.normal(0, 1, (val_batch_size, latent_dim)))
-    #         # Generate a batch of images
-    #         #if args.n_classes > 0:
-    #         #    if cls_idx is not None:
-    #         #        label = torch.ones(noise.shape[0]) * cls_idx
-    #         #        label = label.type(torch.cuda.LongTensor)
-    #         #    else:
-    #         #        label = torch.randint(low=0, high=args.n_classes, size=(noise.shape[0],), device='cuda')
-    #         #    gen_imgs = generator(noise)
-    #         #else:
-    #         gen_imgs = generator(noise)
-    #         #if isinstance(gen_imgs, tuple):
-    #         #    gen_imgs = gen_imgs[0]
-    #         img_list += [gen_imgs]
-    #     img_list = torch.cat(img_list, 0)
-    #     fid_score = test_calculate_fid_given_paths_torch(img_list, real_imgs) #この関数で、img_listとreal_imgsから計算するんだろうな。
+    generator.eval()
+    with torch.no_grad():
+        # eval mode
+        generator = generator.eval()
+        eval_iter = num_img // val_batch_size
+        img_list = []
+        for _ in tqdm(range(eval_iter), desc='sample images'):
+            noise = torch.cuda.FloatTensor(np.random.normal(0, 1, (val_batch_size, latent_dim)))
+            # Generate a batch of images
+            #if args.n_classes > 0:
+            #    if cls_idx is not None:
+            #        label = torch.ones(noise.shape[0]) * cls_idx
+            #        label = label.type(torch.cuda.LongTensor)
+            #    else:
+            #        label = torch.randint(low=0, high=args.n_classes, size=(noise.shape[0],), device='cuda')
+            #    gen_imgs = generator(noise)
+            #else:
+            gen_imgs = generator(noise)
+            #if isinstance(gen_imgs, tuple):
+            #    gen_imgs = gen_imgs[0]
+            img_list += [gen_imgs]
+        img_list = torch.cat(img_list, 0)
+        fid_score = test_calculate_fid_given_paths_torch(img_list, real_imgs) #この関数で、img_listとreal_imgsから計算するんだろうな。
 
     if writer_dict:
         writer = writer_dict['writer']

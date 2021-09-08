@@ -57,7 +57,9 @@ def test_real_imgs_row_data(airplane, automobile, bird, cat, deer, dog, frog, ho
 
     のように、予め配列化したい種類の画像に１のフラグを立てて置く必要があります。
     '''
-    train_set = torchvision.datasets.CIFAR10(root='./data', train=True, download=True)
+    img_size = 32
+    transform = transforms.Compose([transforms.Resize(size=(img_size, img_size)),transforms.RandomHorizontalFlip(),transforms.ToTensor(),transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+    train_set = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)
     cifar_image_set = []
 
     for i in range(len(train_set)):
@@ -92,6 +94,11 @@ def test_real_imgs_row_data(airplane, automobile, bird, cat, deer, dog, frog, ho
             if train_set[i][1] == 9:
                 cifar_image_set.append(train_set[i][0])
 
+    print(f'(before) type(cifar_image_set): {type(cifar_image_set)}')  # List
+    print(f'len(cifar_image_set): {len(cifar_image_set)}')
+    cifar_image_set = torch.stack(cifar_image_set, 0)
+    print(f'(after) type(cifar_image_set): {type(cifar_image_set)}')  # List
+    print(f'cifar_image_set.size(): {cifar_image_set.size()}')
     print("complete create cifar_image_set")
     return cifar_image_set
 
