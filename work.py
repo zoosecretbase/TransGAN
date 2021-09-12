@@ -9,3 +9,4 @@ if __name__ == '__main__':
     m = MyClass()
     print(m.attribute)
     print(m.say_hello())
+    

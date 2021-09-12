@@ -292,12 +292,7 @@ def test_calculate_fid_given_paths_torch(gen_imgs, real_imgs, require_grad=False
         return fid_value
 
 
-"""
-real_imgsに、generatorで生成される結果の画像と同じサイズにした正解データを同じ形式にして渡して上げれば良い
-"""
-
-
-def test_get_fid_real_imgs(real_imgs, epoch, generator, num_img, val_batch_size, latent_dim, writer_dict=None, cls_idx=None):
+def get_fid_modified(real_imgs, epoch, generator, num_img, val_batch_size, latent_dim, writer_dict=None, cls_idx=None):
     # fid_score = test_calculate_fid_given_paths_torch(real_imgs, real_imgs)  # この関数で、img_listとreal_imgsから計算するんだろうな。
 
     generator.eval()
