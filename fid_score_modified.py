@@ -326,3 +326,13 @@ def get_fid_modified(real_imgs, epoch, generator, num_img, val_batch_size, laten
         writer_dict['valid_global_steps'] = global_steps + 1
 
     return fid_score
+
+
+class GetFid():
+    def __init__(self, train_set) -> None:
+        self.train_set = train_set
+        # 重い処理
+        self.real_images = 'done'  # ここで、 train_set を巨大な Tensor にしておく。
+    
+    def get_fid(self, epoch, generator, num_img, val_batch_size, latent_dim, writer_dict=None, cls_idx=None):
+        return get_fid_modified(self.real_images, epoch, generator, num_img, val_batch_size, latent_dim, writer_dict=None, cls_idx=None)
